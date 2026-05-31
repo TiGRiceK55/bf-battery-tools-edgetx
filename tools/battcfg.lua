@@ -11,6 +11,7 @@
 --------------------------------------------------------------------------------
 local toolName = "TNS|Battery Config|TNE"
 local BF = "/SCRIPTS/BF/"
+local VERSION = "v1.0.1"
 
 local profileName = { [1] = "LiPo", [2] = "Li-Ion" }
 local presets = {
@@ -110,7 +111,7 @@ local function pumpMsp()
     elseif cmd == MSP_WRITE then
         protocol.mspRead(MSP_EEPROM); S.state = "eeprom"; S.ts = getTime()
     elseif cmd == MSP_EEPROM then
-        S.state = "idle"; S.status = "Saved"; startRead()
+        S.state = "idle"; S.status = "Saved - replug battery"; startRead()
     end
     if S.state ~= "idle" and (S.ts + 200 < getTime()) then
         S.state = "idle"; if S.status == "Saving..." then S.status = "Timeout" end
@@ -153,6 +154,7 @@ local function draw(event, ts)
     lcd.drawFilledRectangle(0, 0, LCD_W, LCD_H, COL.panel)
     lcd.drawFilledRectangle(0, 0, LCD_W, 30, COL.bar)
     lcd.drawText(8, 4, "Battery Config", COL.white + MIDSIZE)
+    lcd.drawText(LCD_W - 8, 7, VERSION, COL.dim + SMLSIZE + RIGHT)
 
     if not S.cfg then
         lcd.drawText(LCD_W / 2, LCD_H / 2 - 10, "Connecting to FC...", COL.dim + MIDSIZE + CENTER)
