@@ -2,7 +2,7 @@
 
 A small collection of Lua add-ons that make changing and viewing your Betaflight
 battery setup fast on color touchscreen radios (developed and tested on a
-**RadioMaster TX15**, EdgeTX). It is intended to complement the official
+**RadioMaster TX15**, EdgeTX v2.12.1). It is intended to complement the official
 [betaflight-tx-lua-scripts](https://github.com/betaflight/betaflight-tx-lua-scripts).
 
 There are four pieces, all independent — install only what you want:
