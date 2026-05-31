@@ -113,7 +113,6 @@ Optional widget settings (long-press the widget → *Widget settings*):
 
 - **Write only while disarmed.** Betaflight refuses EEPROM writes while the quad
   is armed — this is a safety feature, not a bug.
-- The config tools **do not reboot** the FC. Battery settings apply without a reboot.
 - Profile auto-detection uses the min cell voltage: ≤ 3.15 V is treated as Li-Ion,
   otherwise LiPo.
 - **BattView** colors follow your EdgeTX theme (dark text on light themes, light on
