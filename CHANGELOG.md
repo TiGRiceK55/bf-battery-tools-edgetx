@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.1
+- Config tools now show "Saved - replug battery"; the README explains why a
+  battery replug is recommended after changing the profile (cell count is
+  detected at battery connect and the tools do not reboot the FC).
+- Unified "connect FC" state across both widgets when telemetry is down.
+- The full-screen Battery Config screen now shows the version number.
+
 ## v1.0.0
 First public release.
 
@@ -12,4 +19,3 @@ First public release.
   with touch working immediately.
 - **Battery+** page for the Betaflight TX Lua scripts: LiPo/Li-Ion profile
   switch with manual capacity.
-- Unified "connect FC" state across both widgets when telemetry is down.
