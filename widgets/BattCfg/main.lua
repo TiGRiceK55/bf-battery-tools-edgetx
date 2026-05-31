@@ -13,6 +13,7 @@
 --------------------------------------------------------------------------------
 
 local BF = "/SCRIPTS/BF/"
+local VERSION = "v1.0.1"
 
 -- ---- profiles (V per cell) + capacity quick picks (edit to taste) -----------
 local profileName = { [1] = "LiPo", [2] = "Li-Ion" }
@@ -134,7 +135,7 @@ local function pumpMsp(self)
     elseif cmd == MSP_WRITE then
         protocol.mspRead(MSP_EEPROM); self.state = "eeprom"; self.ts = getTime()
     elseif cmd == MSP_EEPROM then
-        self.state = "idle"; self.status = "Saved"; startRead(self)
+        self.state = "idle"; self.status = "Saved - replug battery"; startRead(self)
     end
     if self.state ~= "idle" and (self.ts + 200 < getTime()) then
         self.state = "idle"; if self.status == "Saving..." then self.status = "Timeout" end
@@ -231,6 +232,7 @@ local function drawFull(self, event, ts)
     lcd.drawFilledRectangle(0, 0, LCD_W, LCD_H, COL.panel)
     lcd.drawFilledRectangle(0, 0, LCD_W, 30, COL.bar)
     lcd.drawText(8, 4, "Battery Config", COL.white + MIDSIZE)
+    lcd.drawText(LCD_W - 8, 7, VERSION, COL.dim + SMLSIZE + RIGHT)
 
     if not self.cfg then
         lcd.drawText(LCD_W / 2, LCD_H / 2 - 10, "Connecting to FC...", COL.dim + MIDSIZE + CENTER)
