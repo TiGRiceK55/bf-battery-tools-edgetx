@@ -1,0 +1,11 @@
+This project is licensed under the GNU General Public License v3.0.
+
+The full license text is intentionally not bundled here. When you create the
+repository on GitHub, choose "GNU General Public License v3.0" as the license
+and GitHub will add the canonical LICENSE file automatically. Alternatively,
+download the official text from https://www.gnu.org/licenses/gpl-3.0.txt and
+replace this file with it.
+
+Why GPL-3.0: the Battery+ page and the BattCfg widget/tool build on and load the
+Betaflight TX Lua scripts (https://github.com/betaflight/betaflight-tx-lua-scripts),
+which are GPL-3.0. As derivative works they inherit that license. See NOTICE.md.
