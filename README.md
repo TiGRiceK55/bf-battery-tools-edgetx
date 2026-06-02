@@ -34,8 +34,7 @@ Opening the **BattCfg** full-screen editor — hold the widget, then pick *Full 
 
 ![Hold the widget to open Full screen](docs/battcfg-hold-fullscreen.png)
 
-The full-screen editor: tap **LiPo** / **Li-Ion** to apply a profile (saved
-immediately), adjust capacity with **-50 / +50** or the quick-pick buttons, then **SAVE**:
+The full-screen editor: tap **LiPo** / **Li-Ion**/ **LiHV** to apply a profile, adjust capacity with **-50 / +50** or the quick-pick buttons, then **SAVE**:
 
 ![BattCfg full-screen editor](docs/battcfg-fullscreen-editor.png)
 
