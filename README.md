@@ -2,7 +2,7 @@
 
 A small collection of Lua add-ons that make changing and viewing your Betaflight
 battery setup fast on color touchscreen radios (developed and tested on a
-**RadioMaster TX15**, EdgeTX v2.12.1). It is intended to complement the official
+**RadioMaster TX15**, EdgeTX). It is intended to complement the official
 [betaflight-tx-lua-scripts](https://github.com/betaflight/betaflight-tx-lua-scripts).
 
 There are four pieces, all independent — install only what you want:
@@ -14,8 +14,8 @@ There are four pieces, all independent — install only what you want:
 | **Battery Config** tool | Same full-screen editor, opened from `SYS > Tools` | `SCRIPTS/TOOLS/battcfg.lua` | Yes |
 | **Battery+** page | Extra page inside the BF Lua scripts: LiPo/Li-Ion profile switch + capacity | `SCRIPTS/BF/PAGES/battery2.lua` (+ patched `pages.lua`, `COMPILE/scripts.lua`) | Yes (it *is* a BF page) |
 
-> Profiles default to **LiPo** (min 3.30 / warn 3.50 / max 4.30 V/cell) and
-> **Li-Ion** (min 3.00 / warn 3.30 / max 4.20 V/cell). Capacity quick picks
+> Profiles default to **LiPo** (3.30 / 3.50 / 4.30 V/cell),
+> **Li-Ion** (3.00 / 3.30 / 4.20) and **LiHV** (3.30 / 3.50 / 4.35). Capacity quick picks
 > default to `8400 / 4000 / 3300 / 1550 / 1480` mAh with a 50 mAh step.
 > Edit the tables near the top of each file to change these.
 
@@ -113,8 +113,17 @@ Optional widget settings (long-press the widget → *Widget settings*):
 
 - **Write only while disarmed.** Betaflight refuses EEPROM writes while the quad
   is armed — this is a safety feature, not a bug.
-- Profile auto-detection uses the min cell voltage: ≤ 3.15 V is treated as Li-Ion,
-  otherwise LiPo.
+- **Changes are applied as one package.** In the BattCfg full-screen editor / the
+  Battery Config tool, tapping a profile (LiPo / Li-Ion / LiHV) or changing the
+  capacity only *stages* the change — the SAVE button turns amber and shows "SAVE *".
+  Nothing is sent to the FC until you press **SAVE**. Leaving the editor without
+  saving discards the staged changes.
+- **After SAVE the FC reboots automatically**, so the new settings (including the
+  cell-count detection used for the low-voltage warning) take effect **without
+  unplugging and replugging the battery**. The link drops for a few seconds during
+  the reboot; the widgets show "connect FC" until telemetry returns, then refresh.
+- Profile auto-detection from the FC values: max cell ≥ 4.33 V → LiHV;
+  else min cell ≤ 3.15 V → Li-Ion; else LiPo.
 - **BattView** colors follow your EdgeTX theme (dark text on light themes, light on
   dark) and don't fill the background, so the widget blends into your home screen.
   The charge gauge stays green/yellow/red regardless of theme.

@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.0.2
+- Battery Config now treats all settings as one package: selecting a profile no
+  longer saves immediately. Profile (LiPo/Li-Ion/LiHV) and capacity are staged,
+  the SAVE button shows "SAVE *" while there are unsaved changes, and SAVE writes
+  everything at once. Leaving the editor without saving discards staged changes.
+- After SAVE the FC reboots automatically, so settings apply without unplugging
+  and replugging the battery.
+- Added a LiHV profile (3.30 / 3.50 / 4.35 V/cell) to the widget, the tool and
+  the Battery+ page. Profile auto-detection now recognises LiHV by max cell voltage.
+
 ## v1.0.1
 - Config tools now show "Saved - replug battery"; the README explains why a
   battery replug is recommended after changing the profile (cell count is
